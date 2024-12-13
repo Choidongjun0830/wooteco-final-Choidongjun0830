@@ -17,4 +17,9 @@ public class Menu {
     public MenuCategory getMenuCategory() {
         return menuCategory;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

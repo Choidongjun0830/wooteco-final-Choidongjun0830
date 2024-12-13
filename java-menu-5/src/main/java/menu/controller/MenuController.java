@@ -1,6 +1,8 @@
 package menu.controller;
 
 import menu.domain.Coach;
+import menu.domain.Menu;
+import menu.domain.MenuCategory;
 import menu.service.CoachService;
 import menu.service.MenuService;
 import menu.view.InputView;
@@ -15,16 +17,18 @@ public class MenuController {
     MenuService menuService = new MenuService();
     CoachService coachService = new CoachService();
 
-    public void startProcess() {
+    public void setUpProcess() {
         outputView.startRecommand();
         List<Coach> coaches = coachService.getCoaches();
         menuService.initMenuCategories();
-        for (Coach coach : coaches) {
-            menuService.getCanNotEatMenus(coaches);
-        }
-        List<Coach> allCoaches = coachService.getAllCoaches();
-        for (Coach coach : allCoaches) {
-            System.out.println("coach = " + coach);
-        }
+        menuService.getCanNotEatMenus(coaches);
+    }
+
+    public void recommendProcess() {
+        List<MenuCategory> menuCategories = menuService.pickMenuCategories(); //결과 출력에 넘기기
+        menuService.pickMenus(menuCategories, coachService.getAllCoaches());
+        List<Coach> coaches = coachService.getAllCoaches();
+
+        outputView.printResult(menuCategories, coaches);
     }
 }

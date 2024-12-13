@@ -7,14 +7,14 @@ import java.util.List;
 public class Coach {
     // 이름은 2글자 ~ 4글자
     private String name;
-    private List<Menu> recommendMenus = new ArrayList<>();
-    private List<Menu> notEatMenus = new ArrayList<>();
+    private List<String> recommendMenus = new ArrayList<>();
+    private List<String> notEatMenus = new ArrayList<>();
 
     public Coach(String name) {
         this.name = name;
     }
 
-    public Coach(String name, List<Menu> recommendMenus, List<Menu> notEatMenus) {
+    public Coach(String name, List<String> recommendMenus, List<String> notEatMenus) {
         this.name = name;
         this.recommendMenus = recommendMenus;
         this.notEatMenus = notEatMenus;
@@ -24,19 +24,19 @@ public class Coach {
         return name;
     }
 
-    public List<Menu> getRecommendMenus() {
+    public List<String> getRecommendMenus() {
         return recommendMenus;
     }
 
-    public List<Menu> getNotEatMenus() {
+    public List<String> getNotEatMenus() {
         return notEatMenus;
     }
 
-    public void addRecommendMenu(Menu menu) {
+    public void addRecommendMenu(String menu) {
         recommendMenus.add(menu);
     }
 
-    public void addNotEatMenu(Menu menu) {
+    public void addNotEatMenu(String menu) {
         notEatMenus.add(menu);
     }
 
